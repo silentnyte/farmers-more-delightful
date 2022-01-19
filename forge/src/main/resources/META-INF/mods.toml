@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[37,)"
+#issueTrackerURL = ""
+license = "Insert License Here"
+
+[[mods]]
+modId = "farmersmoredelightful"
+version = "${version}"
+displayName = "Farmers More Delightful"
+authors = "Me!"
+description = '''
+Add-on to Farmers Delight
+'''
+#logoFile = ""
+
+[[dependencies.farmersmoredelightful]]
+modId = "forge"
+mandatory = true
+versionRange = "[37,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.farmersmoredelightful]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.17.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.farmersmoredelightful]]
+modId = "architectury"
+mandatory = true
+versionRange = "[2.9.3,)"
+ordering = "AFTER"
+side = "BOTH"

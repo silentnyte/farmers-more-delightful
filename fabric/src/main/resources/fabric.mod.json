@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "farmersmoredelightful",
+  "version": "${version}",
+  "name": "Farmers More Delightful",
+  "description": "Add-on to Farmers Delight",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/farmers-more-delightful"
+  },
+  "license": "Insert License Here",
+  "icon": "assets/farmersmoredelightful/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.farmersmoredelightful.fabric.FarmersMoreDelightfulFabric"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.17.1",
+    "architectury": ">=2.9.3"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
