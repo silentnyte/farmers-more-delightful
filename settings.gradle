@@ -11,4 +11,4 @@ include("common")
 include("fabric")
 include("forge")
 
-rootProject.name = "farmers-more-delightful"
+rootProject.name = "farmersmoredelightful"

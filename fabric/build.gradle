@@ -15,6 +15,15 @@ configurations {
     developmentFabric.extendsFrom common
 }
 
+repositories {
+    /* REI Integration */
+    maven { url "https://maven.shedaniel.me" }
+
+	/* WTHIT Integration */
+	maven { url "https://maven.bai.lol" }
+
+}
+
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
@@ -23,6 +32,13 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+
+    /* REI Integration */
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
+
+	/* WTHIT Integration */
+	modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+
 }
 
 processResources {

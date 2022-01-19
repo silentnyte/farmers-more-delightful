@@ -1,6 +1,6 @@
-package com.nytz.farmersmoredelightful.fabric;
+package com.nytz.mc.farmersmoredelightful.fabric;
 
-import com.nytz.farmersmoredelightful.FarmersMoreDelightful;
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import net.fabricmc.api.ModInitializer;
 
 public class FarmersMoreDelightfulFabric implements ModInitializer {

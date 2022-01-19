@@ -1,7 +1,7 @@
-package com.nytz.farmersmoredelightful.forge;
+package com.nytz.mc.farmersmoredelightful.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import com.nytz.farmersmoredelightful.FarmersMoreDelightful;
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 

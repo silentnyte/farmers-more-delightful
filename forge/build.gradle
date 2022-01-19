@@ -21,6 +21,15 @@ configurations {
     developmentForge.extendsFrom common
 }
 
+repositories {
+    /* REI Integration */
+    maven { url "https://maven.shedaniel.me" }
+
+	/* WTHIT Integration */
+	maven { url "https://maven.bai.lol" }
+
+}
+
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     // Remove the next line if you don't want to depend on the API
@@ -28,6 +37,13 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+
+    /* REI Integration */
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
+
+	/* WTHIT Integration */
+	modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+
 }
 
 processResources {

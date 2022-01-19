@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.nytz.farmersmoredelightful.mixin.fabric",
+  "package": "com.nytz.mc.farmersmoredelightful.mixin.fabric",
   "compatibilityLevel": "JAVA_16",
   "client": [
   ],

@@ -1,6 +1,6 @@
-package com.nytz.farmersmoredelightful.forge;
+package com.nytz.mc.farmersmoredelightful.forge;
 
-import com.nytz.farmersmoredelightful.ExampleExpectPlatform;
+import com.nytz.mc.farmersmoredelightful.ExampleExpectPlatform;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.nio.file.Path;

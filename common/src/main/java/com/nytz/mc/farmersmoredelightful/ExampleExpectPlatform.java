@@ -1,4 +1,4 @@
-package com.nytz.farmersmoredelightful;
+package com.nytz.mc.farmersmoredelightful;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import dev.architectury.platform.Platform;
@@ -13,9 +13,9 @@ public class ExampleExpectPlatform {
      * platform sub-package, with its class suffixed with {@code Impl}.
      * <p>
      * Example:
-     * Expect: com.nytz.farmersmoredelightful.ExampleExpectPlatform#getConfigDirectory()
-     * Actual Fabric: com.nytz.farmersmoredelightful.fabric.ExampleExpectPlatformImpl#getConfigDirectory()
-     * Actual Forge: com.nytz.farmersmoredelightful.forge.ExampleExpectPlatformImpl#getConfigDirectory()
+     * Expect: com.nytz.mc.farmersmoredelightful.ExampleExpectPlatform#getConfigDirectory()
+     * Actual Fabric: com.nytz.mc.farmersmoredelightful.fabric.ExampleExpectPlatformImpl#getConfigDirectory()
+     * Actual Forge: com.nytz.mc.farmersmoredelightful.forge.ExampleExpectPlatformImpl#getConfigDirectory()
      * <p>
      * <a href="https://plugins.jetbrains.com/plugin/16210-architectury">You should also get the IntelliJ plugin to help with @ExpectPlatform.</a>
      */
