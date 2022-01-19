@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.farmersmoredelightful.fabric.FarmersMoreDelightfulFabric"
+      "com.nytz.farmersmoredelightful.fabric.FarmersMoreDelightfulFabric"
     ]
   },
   "depends": {

@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "net.farmersmoredelightful.mixin.forge",
+  "package": "com.nytz.farmersmoredelightful.mixin.forge",
   "compatibilityLevel": "JAVA_16",
   "client": [
   ],

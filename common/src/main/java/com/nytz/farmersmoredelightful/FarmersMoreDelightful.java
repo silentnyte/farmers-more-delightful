@@ -1,4 +1,4 @@
-package net.farmersmoredelightful;
+package com.nytz.farmersmoredelightful;
 
 import com.google.common.base.Suppliers;
 import dev.architectury.registry.CreativeTabRegistry;

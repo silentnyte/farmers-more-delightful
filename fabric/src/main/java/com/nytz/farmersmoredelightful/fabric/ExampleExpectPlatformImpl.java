@@ -1,6 +1,6 @@
-package net.farmersmoredelightful.fabric;
+package com.nytz.farmersmoredelightful.fabric;
 
-import net.farmersmoredelightful.ExampleExpectPlatform;
+import com.nytz.farmersmoredelightful.ExampleExpectPlatform;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
