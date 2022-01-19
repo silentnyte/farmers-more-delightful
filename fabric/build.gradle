@@ -22,6 +22,17 @@ repositories {
 	/* WTHIT Integration */
 	maven { url "https://maven.bai.lol" }
 
+	/* Farmers Delight Integration */
+	maven { url "https://bitbucket.org/n-horyzon/farmers-delight-fabric/" }
+
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+
 }
 
 dependencies {
@@ -34,10 +45,14 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
     /* REI Integration */
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${rootProject.rei_version}"
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
 
 	/* WTHIT Integration */
 	modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+
+	/* Farmers Delight Integration */
+    modImplementation "curse.maven:farmers-delight-fabric-482834:3531640"
 
 }
 

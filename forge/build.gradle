@@ -42,7 +42,7 @@ dependencies {
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rootProject.rei_version}"
 
 	/* WTHIT Integration */
-	modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+	modRuntimeOnly "mcp.mobius.waila:wthit:forge-${rootProject.wthit_version}"
 
 }
 
