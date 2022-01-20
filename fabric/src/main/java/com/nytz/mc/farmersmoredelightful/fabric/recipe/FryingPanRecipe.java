@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CookingPotRecipe implements Recipe<Inventory> {
+public class FryingPanRecipe implements Recipe<Inventory> {
     public static final int INPUT_SLOTS = 6;
 
     private final Identifier id;
@@ -26,7 +26,7 @@ public class CookingPotRecipe implements Recipe<Inventory> {
     private final float experience;
     private final int cookTime;
 
-    public CookingPotRecipe(Identifier id, String group, DefaultedList<Ingredient> ingredientList, ItemStack output, ItemStack container,
+    public FryingPanRecipe(Identifier id, String group, DefaultedList<Ingredient> ingredientList, ItemStack output, ItemStack container,
             float experience, int cookTime) {
         this.id = id;
         this.group = group;

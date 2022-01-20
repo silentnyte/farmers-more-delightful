@@ -6,7 +6,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public enum SoundsRegistry {
-    BLOCK_COOKING_POT_BOIL("block.cooking_pot.boil");
+    BLOCK_FRYING_PAN_BOIL("block.frying_pan.boil");
 
     private final String pathName;
     private final SoundEvent soundEvent;

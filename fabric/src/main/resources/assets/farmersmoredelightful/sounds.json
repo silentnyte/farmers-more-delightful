@@ -1,14 +1,14 @@
 {
-  "block.cooking_pot.boil": {
+  "block.frying_pan.boil": {
     "category": "block",
-    "subtitle": "farmersdelight.subtitles.cooking_pot.boil",
+    "subtitle": "farmersdelight.subtitles.frying_pan.boil",
     "sounds": [
       {
-        "name": "farmersdelight:block/cooking_pot_boil1",
+        "name": "farmersdelight:block/frying_pan_boil1",
         "stream": true
       },
       {
-        "name": "farmersdelight:block/cooking_pot_boil2",
+        "name": "farmersdelight:block/frying_pan_boil2",
         "stream": true
       }
     ]

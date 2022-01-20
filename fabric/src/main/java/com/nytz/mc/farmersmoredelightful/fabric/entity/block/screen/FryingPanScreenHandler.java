@@ -1,15 +1,15 @@
 package com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen;
 
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.CookingPotBlockEntity;
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.inventory.CookingPotMealSlot;
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.inventory.CookingPotResultSlot;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.FryingPanBlockEntity;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.inventory.FryingPanMealSlot;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.inventory.FryingPanResultSlot;
+import com.nytz.mc.farmersmoredelightful.fabric.registry.BlocksRegistry;
+import com.nytz.mc.farmersmoredelightful.fabric.registry.ExtendedScreenTypesRegistry;
 
 import com.mojang.datafixers.util.Pair;
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.item.inventory.ItemStackHandler;
 import com.nhoryzon.mc.farmersdelight.item.inventory.SlotItemHandler;
-import com.nhoryzon.mc.farmersdelight.registry.BlocksRegistry;
-import com.nhoryzon.mc.farmersdelight.registry.ExtendedScreenTypesRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.BlockEntity;
@@ -28,7 +28,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.Objects;
 
-public class CookingPotScreenHandler extends ScreenHandler {
+public class FryingPanScreenHandler extends ScreenHandler {
 
     public static final Identifier EMPTY_CONTAINER_SLOT_BOWL = new Identifier(FarmersDelightMod.MOD_ID, "item/empty_container_slot_bowl");
 
@@ -38,16 +38,16 @@ public class CookingPotScreenHandler extends ScreenHandler {
     private static final int INV_INDEX_START_PLAYER_INV = INV_INDEX_OUTPUT + 1;
     private static final int INV_INDEX_END_PLAYER_INV = INV_INDEX_START_PLAYER_INV + 36;
 
-    public final CookingPotBlockEntity tileEntity;
+    public final FryingPanBlockEntity tileEntity;
     public final ItemStackHandler inventoryHandler;
-    private final PropertyDelegate cookingPotData;
+    private final PropertyDelegate fryingPanData;
     private final ScreenHandlerContext canInteractWithCallable;
 
-    public CookingPotScreenHandler(final int windowId, final PlayerInventory playerInventory, final CookingPotBlockEntity blockEntity, PropertyDelegate cookingPotDataIn) {
-        super(ExtendedScreenTypesRegistry.COOKING_POT.get(), windowId);
+    public FryingPanScreenHandler(final int windowId, final PlayerInventory playerInventory, final FryingPanBlockEntity blockEntity, PropertyDelegate fryingPanDataIn) {
+        super(ExtendedScreenTypesRegistry.FRYING_PAN.get(), windowId);
         this.tileEntity = blockEntity;
         this.inventoryHandler = blockEntity.getInventory();
-        this.cookingPotData = cookingPotDataIn;
+        this.fryingPanData = fryingPanDataIn;
         this.canInteractWithCallable = ScreenHandlerContext.create(blockEntity.getWorld(), blockEntity.getPos());
 
         // Ingredient Slots - 2 Rows x 3 Columns
@@ -65,7 +65,7 @@ public class CookingPotScreenHandler extends ScreenHandler {
         }
 
         // Meal Display
-        addSlot(new CookingPotMealSlot(inventoryHandler, 6, 124, 26));
+        addSlot(new FryingPanMealSlot(inventoryHandler, 6, 124, 26));
 
         // Bowl Input
         addSlot(new SlotItemHandler(inventoryHandler, 7, 92, 55) {
@@ -77,7 +77,7 @@ public class CookingPotScreenHandler extends ScreenHandler {
         });
 
         // Bowl Output
-        addSlot(new CookingPotResultSlot(inventoryHandler, 8, 124, 55));
+        addSlot(new FryingPanResultSlot(inventoryHandler, 8, 124, 55));
 
         // Main Player Inventory
         int startPlayerInvY = startY * 4 + 12;
@@ -93,20 +93,20 @@ public class CookingPotScreenHandler extends ScreenHandler {
             addSlot(new Slot(playerInventory, column, startX + (column * borderSlotSize), 142));
         }
 
-        addProperties(cookingPotDataIn);
+        addProperties(fryingPanDataIn);
     }
 
-    public CookingPotScreenHandler(final int windowId, final PlayerInventory playerInventory, final PacketByteBuf data) {
+    public FryingPanScreenHandler(final int windowId, final PlayerInventory playerInventory, final PacketByteBuf data) {
         this(windowId, playerInventory, getBlockEntity(playerInventory, data), new ArrayPropertyDelegate(4));
     }
 
-    private static CookingPotBlockEntity getBlockEntity(final PlayerInventory playerInventory, final PacketByteBuf data) {
+    private static FryingPanBlockEntity getBlockEntity(final PlayerInventory playerInventory, final PacketByteBuf data) {
         Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
         Objects.requireNonNull(data, "data cannot be null");
         final BlockEntity tileAtPos = playerInventory.player.world.getBlockEntity(data.readBlockPos());
 
-        if (tileAtPos instanceof CookingPotBlockEntity cookingPotBlockEntity) {
-            return cookingPotBlockEntity;
+        if (tileAtPos instanceof FryingPanBlockEntity fryingPanBlockEntity) {
+            return fryingPanBlockEntity;
         }
 
         throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
@@ -114,7 +114,7 @@ public class CookingPotScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity playerIn) {
-        return canUse(canInteractWithCallable, playerIn, BlocksRegistry.COOKING_POT.get());
+        return canUse(canInteractWithCallable, playerIn, BlocksRegistry.FRYING_PAN.get());
     }
 
     @Override
@@ -158,8 +158,8 @@ public class CookingPotScreenHandler extends ScreenHandler {
 
     @Environment(value= EnvType.CLIENT)
     public int getCookProgressionScaled() {
-        int i = cookingPotData.get(0);
-        int j = cookingPotData.get(1);
+        int i = fryingPanData.get(0);
+        int j = fryingPanData.get(1);
         return j != 0 && i != 0 ? i * 24 / j : 0;
     }
 

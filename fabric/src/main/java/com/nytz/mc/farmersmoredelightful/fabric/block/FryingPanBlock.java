@@ -1,10 +1,11 @@
 package com.nytz.mc.farmersmoredelightful.fabric.block;
 
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.FryingPanBlockEntity;
+import com.nytz.mc.farmersmoredelightful.fabric.registry.BlockEntityTypesRegistry;
+import com.nytz.mc.farmersmoredelightful.fabric.registry.SoundsRegistry;
+
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
-import com.nhoryzon.mc.farmersdelight.entity.block.CookingPotBlockEntity;
 import com.nhoryzon.mc.farmersdelight.item.inventory.ItemStackHandler;
-import com.nhoryzon.mc.farmersdelight.registry.BlockEntityTypesRegistry;
-import com.nhoryzon.mc.farmersdelight.registry.SoundsRegistry;
 import com.nhoryzon.mc.farmersdelight.tag.Tags;
 import com.nhoryzon.mc.farmersdelight.util.CompoundTagUtils;
 import net.fabricmc.api.EnvType;
@@ -62,7 +63,7 @@ import java.util.List;
 import java.util.Random;
 
 @SuppressWarnings("deprecation")
-public class CookingPotBlock extends BlockWithEntity implements InventoryProvider, Waterloggable {
+public class FryingPanBlock extends BlockWithEntity implements InventoryProvider, Waterloggable {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty SUPPORTED = Properties.DOWN;
@@ -70,7 +71,7 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
     protected static final VoxelShape SHAPE = Block.createCuboidShape(2.d, .0d, 2.d, 14.d, 10.d, 14.d);
     protected static final VoxelShape SHAPE_SUPPORTED = VoxelShapes.union(SHAPE, Block.createCuboidShape(.0d, -1.d, .0d, 16.d, .0d, 16.d));
 
-    public CookingPotBlock() {
+    public FryingPanBlock() {
         super(FabricBlockSettings.of(Material.METAL).breakByTool(FabricToolTags.PICKAXES).hardness(2.f).resistance(6.f).sounds(BlockSoundGroup.LANTERN));
         setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(SUPPORTED, false).with(WATERLOGGED, false));
     }
@@ -78,13 +79,13 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return BlockEntityTypesRegistry.COOKING_POT.get().instantiate(pos, state);
+        return BlockEntityTypesRegistry.FRYING_PAN.get().instantiate(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, BlockEntityTypesRegistry.COOKING_POT.get(), CookingPotBlockEntity::tick);
+        return checkType(type, BlockEntityTypesRegistry.FRYING_PAN.get(), FryingPanBlockEntity::tick);
     }
 
     @Override
@@ -114,7 +115,7 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         ItemStack itemStack = super.getPickStack(world, pos, state);
-        CookingPotBlockEntity blockEntity = (CookingPotBlockEntity) world.getBlockEntity(pos);
+        FryingPanBlockEntity blockEntity = (FryingPanBlockEntity) world.getBlockEntity(pos);
         if (blockEntity != null) {
             NbtCompound tag = blockEntity.writeMeal(new NbtCompound());
             if (!tag.isEmpty()) {
@@ -140,22 +141,22 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
                 ItemStack meal = handler.getStack(6);
                 if (!meal.isEmpty()) {
                     MutableText servingsOf = meal.getCount() == 1
-                            ? FarmersDelightMod.i18n("tooltip.cooking_pot.single_serving")
-                            : FarmersDelightMod.i18n("tooltip.cooking_pot.many_servings", meal.getCount());
+                            ? FarmersDelightMod.i18n("tooltip.frying_pan.single_serving")
+                            : FarmersDelightMod.i18n("tooltip.frying_pan.many_servings", meal.getCount());
                     tooltip.add(servingsOf.formatted(Formatting.GRAY));
                     MutableText mealName = meal.getName().shallowCopy();
                     tooltip.add(mealName.formatted(meal.getRarity().formatting));
                 }
             }
         } else {
-            tooltip.add(FarmersDelightMod.i18n("tooltip.cooking_pot.empty").formatted(Formatting.GRAY));
+            tooltip.add(FarmersDelightMod.i18n("tooltip.frying_pan.empty").formatted(Formatting.GRAY));
         }
     }
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        if (itemStack.hasCustomName() && world.getBlockEntity(pos) instanceof CookingPotBlockEntity cookingPotBlockEntity) {
-            cookingPotBlockEntity.setCustomName(itemStack.getName());
+        if (itemStack.hasCustomName() && world.getBlockEntity(pos) instanceof FryingPanBlockEntity fryingPanBlockEntity) {
+            fryingPanBlockEntity.setCustomName(itemStack.getName());
         }
     }
 
@@ -163,12 +164,12 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
     @Environment(value=EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof CookingPotBlockEntity cookingPotBlockEntity && cookingPotBlockEntity.isAboveLitHeatSource()) {
+        if (blockEntity instanceof FryingPanBlockEntity fryingPanBlockEntity && fryingPanBlockEntity.isAboveLitHeatSource()) {
             double dX = pos.getX() + .5d;
             double dY = pos.getY();
             double dZ = pos.getZ() + .5d;
             if (random.nextInt(10) == 0) {
-                world.playSound(dX, dY, dZ, SoundsRegistry.BLOCK_COOKING_POT_BOIL.get(), SoundCategory.BLOCKS, .5f, random.nextFloat() * .2f + .9f, false);
+                world.playSound(dX, dY, dZ, SoundsRegistry.BLOCK_FRYING_PAN_BOIL.get(), SoundCategory.BLOCKS, .5f, random.nextFloat() * .2f + .9f, false);
             }
         }
     }
@@ -181,7 +182,7 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
     @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof CookingPotBlockEntity) {
+        if (blockEntity instanceof FryingPanBlockEntity) {
             return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
         }
 
@@ -190,8 +191,8 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient() && world.getBlockEntity(pos) instanceof CookingPotBlockEntity cookingPotBlockEntity) {
-            ItemStack serving = cookingPotBlockEntity.useHeldItemOnMeal(player.getStackInHand(hand));
+        if (!world.isClient() && world.getBlockEntity(pos) instanceof FryingPanBlockEntity fryingPanBlockEntity) {
+            ItemStack serving = fryingPanBlockEntity.useHeldItemOnMeal(player.getStackInHand(hand));
             if (serving != ItemStack.EMPTY) {
                 if (!player.getInventory().insertStack(serving)) {
                     player.dropItem(serving, false);
@@ -211,8 +212,8 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
-            if (world.getBlockEntity(pos) instanceof CookingPotBlockEntity cookingPotBlockEntity) {
-                ItemScatterer.spawn(world, pos, cookingPotBlockEntity.getDroppableInventory());
+            if (world.getBlockEntity(pos) instanceof FryingPanBlockEntity fryingPanBlockEntity) {
+                ItemScatterer.spawn(world, pos, fryingPanBlockEntity.getDroppableInventory());
             }
 
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -260,8 +261,8 @@ public class CookingPotBlock extends BlockWithEntity implements InventoryProvide
 
     @Override
     public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
-        if (world.getBlockEntity(pos) instanceof CookingPotBlockEntity cookingPotBlockEntity) {
-            return cookingPotBlockEntity.getInventory();
+        if (world.getBlockEntity(pos) instanceof FryingPanBlockEntity fryingPanBlockEntity) {
+            return fryingPanBlockEntity.getInventory();
         }
 
         return null;

@@ -1,6 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.client.screen;
 
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.CookingPotScreenHandler;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.FryingPanScreenHandler;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Environment(value = EnvType.CLIENT)
-public class CookingPotScreen extends HandledScreen<CookingPotScreenHandler> {
+public class FryingPanScreen extends HandledScreen<FryingPanScreenHandler> {
 
-    private static final Identifier BACKGROUND_TEXTURE = new Identifier(FarmersDelightMod.MOD_ID, "textures/gui/cooking_pot.png");
+    private static final Identifier BACKGROUND_TEXTURE = new Identifier(FarmersDelightMod.MOD_ID, "textures/gui/frying_pan.png");
 
-    public CookingPotScreen(CookingPotScreenHandler screenContainer, PlayerInventory inv, Text titleIn) {
+    public FryingPanScreen(FryingPanScreenHandler screenContainer, PlayerInventory inv, Text titleIn) {
         super(screenContainer, inv, titleIn);
         this.x = 0;
         this.y = 0;
@@ -51,7 +51,7 @@ public class CookingPotScreen extends HandledScreen<CookingPotScreenHandler> {
                 ItemStack containerItem = handler.tileEntity.getContainer();
                 String container = !containerItem.isEmpty() ? containerItem.getItem().getName().getString() : "";
 
-                tooltip.add(FarmersDelightMod.i18n("container.cooking_pot.served_on", container).formatted(Formatting.GRAY));
+                tooltip.add(FarmersDelightMod.i18n("container.frying_pan.served_on", container).formatted(Formatting.GRAY));
 
                 renderTooltip(ms, tooltip, mouseX, mouseY);
             } else {

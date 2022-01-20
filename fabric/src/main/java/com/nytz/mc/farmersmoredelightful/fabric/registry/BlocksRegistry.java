@@ -1,9 +1,10 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
+import com.nytz.mc.farmersmoredelightful.fabric.block.FryingPanBlock;
+
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.block.BasketBlock;
 import com.nhoryzon.mc.farmersdelight.block.CabbageCropBlock;
-import com.nhoryzon.mc.farmersdelight.block.CookingPotBlock;
 import com.nhoryzon.mc.farmersdelight.block.CuttingBoardBlock;
 import com.nhoryzon.mc.farmersdelight.block.FeastBlock;
 import com.nhoryzon.mc.farmersdelight.block.HoneyGlazedHamBlock;
@@ -48,7 +49,7 @@ import net.minecraft.util.registry.Registry;
 import java.util.function.Supplier;
 
 public enum BlocksRegistry {
-    COOKING_POT("cooking_pot", CookingPotBlock::new, true);
+    FRYING_PAN("frying_pan", FryingPanBlock::new, true);
 
 
     private static FlammableBlockRegistry.Entry flammable(int burnChance, @SuppressWarnings("SameParameterValue") int spreadChance) {

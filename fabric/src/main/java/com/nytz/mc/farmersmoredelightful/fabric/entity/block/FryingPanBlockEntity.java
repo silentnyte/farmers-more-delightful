@@ -1,13 +1,13 @@
 package com.nytz.mc.farmersmoredelightful.fabric.entity.block;
 
-import com.nytz.mc.farmersmoredelightful.fabric.block.CookingPotBlock;
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.CookingPotScreenHandler;
-import com.nytz.mc.farmersmoredelightful.fabric.recipe.CookingPotRecipe;
+import com.nytz.mc.farmersmoredelightful.fabric.block.FryingPanBlock;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.FryingPanScreenHandler;
+import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipe;
+import com.nytz.mc.farmersmoredelightful.fabric.registry.BlockEntityTypesRegistry;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.item.inventory.ItemStackHandler;
 import com.nhoryzon.mc.farmersdelight.item.inventory.RecipeWrapper;
-import com.nhoryzon.mc.farmersdelight.registry.BlockEntityTypesRegistry;
 import com.nhoryzon.mc.farmersdelight.registry.RecipeTypesRegistry;
 import com.nhoryzon.mc.farmersdelight.tag.Tags;
 import com.nhoryzon.mc.farmersdelight.util.CompoundTagUtils;
@@ -42,7 +42,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class CookingPotBlockEntity extends BlockEntity implements BlockEntityClientSerializable, ExtendedScreenHandlerFactory, Nameable {
+public class FryingPanBlockEntity extends BlockEntity implements BlockEntityClientSerializable, ExtendedScreenHandlerFactory, Nameable {
 
     public static final String TAG_KEY_COOK_TIME = "CookTime";
     public static final String TAG_KEY_COOK_TIME_TOTAL = "CookTimeTotal";
@@ -104,17 +104,17 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
     private int cookTime;
     private int cookTimeTotal;
     private ItemStack container;
-    protected final PropertyDelegate cookingPotData = new CookingPotSyncedData();
-    protected final RecipeType<? extends CookingPotRecipe> recipeType;
+    protected final PropertyDelegate fryingPanData = new FryingPanSyncedData();
+    protected final RecipeType<? extends FryingPanRecipe> recipeType;
 
-    public CookingPotBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState, RecipeType<? extends CookingPotRecipe> recipeType) {
+    public FryingPanBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState, RecipeType<? extends FryingPanRecipe> recipeType) {
         super(blockEntityType, blockPos, blockState);
         this.recipeType = recipeType;
         this.container = ItemStack.EMPTY;
     }
 
-    public CookingPotBlockEntity(BlockPos blockPos, BlockState blockState) {
-        this(BlockEntityTypesRegistry.COOKING_POT.get(), blockPos, blockState, RecipeTypesRegistry.COOKING_RECIPE_SERIALIZER.type());
+    public FryingPanBlockEntity(BlockPos blockPos, BlockState blockState) {
+        this(BlockEntityTypesRegistry.FRYING_PAN.get(), blockPos, blockState, RecipeTypesRegistry.COOKING_RECIPE_SERIALIZER.type());
     }
 
     @Override
@@ -195,7 +195,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
 
     @Override
     public Text getName() {
-        return customName != null ? customName : FarmersDelightMod.i18n("container.cooking_pot");
+        return customName != null ? customName : FarmersDelightMod.i18n("container.frying_pan");
     }
 
     @Override
@@ -210,11 +210,11 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return new CookingPotScreenHandler(syncId, inv, this, cookingPotData);
+        return new FryingPanScreenHandler(syncId, inv, this, fryingPanData);
     }
 
     @SuppressWarnings("unused")
-    public static void tick(World world, BlockPos pos, BlockState state, CookingPotBlockEntity blockEntity) {
+    public static void tick(World world, BlockPos pos, BlockState state, FryingPanBlockEntity blockEntity) {
         if (!world.isClient()) {
             serverTick(world, blockEntity);
         } else {
@@ -222,11 +222,11 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
         }
     }
 
-    protected static void serverTick(World world, CookingPotBlockEntity blockEntity) {
+    protected static void serverTick(World world, FryingPanBlockEntity blockEntity) {
         boolean dirty = false;
 
         if (blockEntity.isAboveLitHeatSource() && blockEntity.hasInput()) {
-            CookingPotRecipe recipe = world.getRecipeManager().getFirstMatch(blockEntity.recipeType,
+            FryingPanRecipe recipe = world.getRecipeManager().getFirstMatch(blockEntity.recipeType,
                     new RecipeWrapper(blockEntity.itemHandler), world).orElse(null);
             if (blockEntity.canCook(recipe)) {
                 ++blockEntity.cookTime;
@@ -259,7 +259,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
         }
     }
 
-    protected static void clientTick(CookingPotBlockEntity blockEntity) {
+    protected static void clientTick(FryingPanBlockEntity blockEntity) {
         if (blockEntity.isAboveLitHeatSource()) {
             blockEntity.animate();
         }
@@ -274,12 +274,12 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
 
     protected int getCookTime() {
         return Objects.requireNonNull(world).getRecipeManager().getFirstMatch(recipeType, new RecipeWrapper(itemHandler), world).map(
-                CookingPotRecipe::getCookTime).orElse(200);
+                FryingPanRecipe::getCookTime).orElse(200);
     }
 
     protected ItemStack getRecipeContainer() {
         return Objects.requireNonNull(world).getRecipeManager().getFirstMatch(recipeType, new RecipeWrapper(itemHandler), world).map(
-                CookingPotRecipe::getContainer).orElse(ItemStack.EMPTY);
+                FryingPanRecipe::getContainer).orElse(ItemStack.EMPTY);
     }
 
     public ItemStack getContainer() {
@@ -336,7 +336,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
         for (int i = 0; i < MEAL_DISPLAY_SLOT; ++i) {
             ItemStack itemStack = itemHandler.getStack(i);
             if (itemStack.getItem().hasRecipeRemainder() && world != null) {
-                Direction direction = getCachedState().get(CookingPotBlock.FACING).rotateYCounterclockwise();
+                Direction direction = getCachedState().get(FryingPanBlock.FACING).rotateYCounterclockwise();
                 double dropX = pos.getX() + .5d + (direction.getOffsetX() * .25d);
                 double dropY = pos.getY() + .7d;
                 double dropZ = pos.getZ() + .5d + (direction.getOffsetZ() * .25d);
@@ -393,7 +393,7 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
     }
 
     /**
-     * Returns every stored ItemStack in the pot, except for prepared meals.
+     * Returns every stored ItemStack in the pan, except for prepared meals.
      *
      * @return a list of item stack.
      */
@@ -487,13 +487,13 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
         buf.writeBlockPos(getPos());
     }
 
-    private class CookingPotSyncedData implements PropertyDelegate {
+    private class FryingPanSyncedData implements PropertyDelegate {
 
         @Override
         public int get(int index) {
             return switch (index) {
-                case 0 -> CookingPotBlockEntity.this.cookTime;
-                case 1 -> CookingPotBlockEntity.this.cookTimeTotal;
+                case 0 -> FryingPanBlockEntity.this.cookTime;
+                case 1 -> FryingPanBlockEntity.this.cookTimeTotal;
                 default -> 0;
             };
         }
@@ -501,9 +501,9 @@ public class CookingPotBlockEntity extends BlockEntity implements BlockEntityCli
         @Override
         public void set(int index, int value) {
             if (index == 0) {
-                CookingPotBlockEntity.this.cookTime = value;
+                FryingPanBlockEntity.this.cookTime = value;
             } else if (index == 1) {
-                CookingPotBlockEntity.this.cookTimeTotal = value;
+                FryingPanBlockEntity.this.cookTimeTotal = value;
             }
         }
 

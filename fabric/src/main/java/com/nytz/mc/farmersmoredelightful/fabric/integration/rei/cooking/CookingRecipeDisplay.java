@@ -1,6 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.integration.rei.cooking;
 
-import com.nytz.mc.farmersmoredelightful.fabric.recipe.CookingPotRecipe;
+import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipe;
 
 import com.google.common.collect.ImmutableList;
 import com.nhoryzon.mc.farmersdelight.integration.rei.FarmersDelightModREI;
@@ -22,7 +22,7 @@ public class CookingRecipeDisplay extends BasicDisplay {
     private final EntryIngredient containerOutput;
     private final int cookTime;
 
-    public CookingRecipeDisplay(CookingPotRecipe recipe) {
+    public CookingRecipeDisplay(FryingPanRecipe recipe) {
         super(EntryIngredients.ofIngredients(recipe.getIngredients()), Collections.singletonList(EntryIngredients.of(recipe.getOutput())),
                 Optional.ofNullable(recipe.getId()));
         containerOutput = EntryIngredients.of(recipe.getContainer());

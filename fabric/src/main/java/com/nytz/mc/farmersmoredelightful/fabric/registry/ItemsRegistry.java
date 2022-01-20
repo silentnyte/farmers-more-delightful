@@ -25,7 +25,7 @@ import java.util.function.Supplier;
 public enum ItemsRegistry {
     /* Block Items */
 
-    COOKING_POT("cooking_pot", () -> new ModBlockItem(BlocksRegistry.COOKING_POT.get()));
+    FRYING_PAN("frying_pan", () -> new ModBlockItem(BlocksRegistry.FRYING_PAN.get()));
 
     /* Items */
 

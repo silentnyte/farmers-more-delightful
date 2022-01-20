@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 
-public class CookingPotRecipeSerializer implements RecipeSerializer<CookingPotRecipe> {
+public class FryingPanRecipeSerializer implements RecipeSerializer<FryingPanRecipe> {
     private static DefaultedList<Ingredient> readIngredients(JsonArray ingredientArray) {
         DefaultedList<Ingredient> ingredientList = DefaultedList.of();
 
@@ -26,13 +26,13 @@ public class CookingPotRecipeSerializer implements RecipeSerializer<CookingPotRe
     }
 
     @Override
-    public CookingPotRecipe read(Identifier id, JsonObject json) {
+    public FryingPanRecipe read(Identifier id, JsonObject json) {
         final String groupIn = JsonHelper.getString(json, "group", "");
         final DefaultedList<Ingredient> inputItemsIn = readIngredients(JsonHelper.getArray(json, "ingredients"));
         if (inputItemsIn.isEmpty()) {
             throw new JsonParseException("No ingredients for cooking recipe");
-        } else if (inputItemsIn.size() > CookingPotRecipe.INPUT_SLOTS) {
-            throw new JsonParseException("Too many ingredients for cooking recipe! The max is " + CookingPotRecipe.INPUT_SLOTS);
+        } else if (inputItemsIn.size() > FryingPanRecipe.INPUT_SLOTS) {
+            throw new JsonParseException("Too many ingredients for cooking recipe! The max is " + FryingPanRecipe.INPUT_SLOTS);
         } else {
             final JsonObject jsonResult = JsonHelper.getObject(json, "result");
             final ItemStack outputIn = new ItemStack(JsonHelper.getItem(jsonResult, "item"), JsonHelper.getInt(jsonResult, "count", 1));
@@ -44,12 +44,12 @@ public class CookingPotRecipeSerializer implements RecipeSerializer<CookingPotRe
             final float experienceIn = JsonHelper.getFloat(json, "experience", .0f);
             final int cookTimeIn = JsonHelper.getInt(json, "cookingtime", 200);
 
-            return new CookingPotRecipe(id, groupIn, inputItemsIn, outputIn, container, experienceIn, cookTimeIn);
+            return new FryingPanRecipe(id, groupIn, inputItemsIn, outputIn, container, experienceIn, cookTimeIn);
         }
     }
 
     @Override
-    public CookingPotRecipe read(Identifier id, PacketByteBuf buf) {
+    public FryingPanRecipe read(Identifier id, PacketByteBuf buf) {
         String groupIn = buf.readString(32767);
 
         int ingredientSize = buf.readVarInt();
@@ -63,11 +63,11 @@ public class CookingPotRecipeSerializer implements RecipeSerializer<CookingPotRe
         float experienceIn = buf.readFloat();
         int cookTimeIn = buf.readVarInt();
 
-        return new CookingPotRecipe(id, groupIn, ingredientList, outputIn, container, experienceIn, cookTimeIn);
+        return new FryingPanRecipe(id, groupIn, ingredientList, outputIn, container, experienceIn, cookTimeIn);
     }
 
     @Override
-    public void write(PacketByteBuf buf, CookingPotRecipe recipe) {
+    public void write(PacketByteBuf buf, FryingPanRecipe recipe) {
         buf.writeString(recipe.getGroup());
         buf.writeVarInt(recipe.getIngredients().size());
 

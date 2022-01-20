@@ -1,7 +1,7 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
-import com.nytz.mc.farmersmoredelightful.fabric.recipe.CookingPotRecipe;
-import com.nytz.mc.farmersmoredelightful.fabric.recipe.CookingPotRecipeSerializer;
+import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipe;
+import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipeSerializer;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.recipe.CuttingBoardRecipe;
@@ -16,7 +16,7 @@ import net.minecraft.util.registry.Registry;
 import java.util.function.Supplier;
 
 public enum RecipeTypesRegistry {
-    COOKING_RECIPE_SERIALIZER("cooking", CookingPotRecipe.class, CookingPotRecipeSerializer::new);
+    COOKING_RECIPE_SERIALIZER("cooking", FryingPanRecipe.class, FryingPanRecipeSerializer::new);
 
     private final String pathName;
     private final Class<? extends Recipe<? extends Inventory>> recipeClass;

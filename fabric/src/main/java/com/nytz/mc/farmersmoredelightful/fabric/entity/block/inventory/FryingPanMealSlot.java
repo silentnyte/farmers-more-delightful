@@ -5,9 +5,9 @@ import com.nhoryzon.mc.farmersdelight.item.inventory.SlotItemHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
-public class CookingPotMealSlot extends SlotItemHandler {
+public class FryingPanMealSlot extends SlotItemHandler {
     
-    public CookingPotMealSlot(ItemHandler itemHandler, int index, int xPosition, int yPosition) {
+    public FryingPanMealSlot(ItemHandler itemHandler, int index, int xPosition, int yPosition) {
         super(itemHandler, index, xPosition, yPosition);
     }
 

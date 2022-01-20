@@ -1,6 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.CookingPotBlockEntity;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.FryingPanBlockEntity;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.entity.block.BasketBlockEntity;
@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 public enum BlockEntityTypesRegistry {
-    COOKING_POT("cooking_pot", CookingPotBlockEntity.class, CookingPotBlockEntity::new, BlocksRegistry.COOKING_POT);
+    FRYING_PAN("frying_pan", FryingPanBlockEntity.class, FryingPanBlockEntity::new, BlocksRegistry.FRYING_PAN);
 
     private final String pathName;
     private final Class<? extends BlockEntity> blockEntityClass;

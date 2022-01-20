@@ -1,6 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
-import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.CookingPotScreenHandler;
+import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.FryingPanScreenHandler;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public enum ExtendedScreenTypesRegistry {
-    COOKING_POT("cooking_pot", CookingPotScreenHandler.class, CookingPotScreenHandler::new);
+    FRYING_PAN("frying_pan", FryingPanScreenHandler.class, FryingPanScreenHandler::new);
 
     private final String pathName;
     private final Class<? extends ScreenHandler> screenHandlerClass;

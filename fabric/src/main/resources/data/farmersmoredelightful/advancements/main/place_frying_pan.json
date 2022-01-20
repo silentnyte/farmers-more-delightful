@@ -2,13 +2,13 @@
   "parent": "farmersdelight:main/place_stove",
   "display": {
     "icon": {
-      "item": "farmersdelight:cooking_pot"
+      "item": "farmersdelight:frying_pan"
     },
     "title": {
-      "translate": "farmersdelight.advancement.place_cooking_pot"
+      "translate": "farmersdelight.advancement.place_frying_pan"
     },
     "description": {
-      "translate": "farmersdelight.advancement.place_cooking_pot.desc"
+      "translate": "farmersdelight.advancement.place_frying_pan.desc"
     },
     "frame": "goal",
     "show_toast": true,
@@ -16,16 +16,16 @@
     "hidden": false
   },
   "criteria": {
-    "cooking_pot": {
+    "frying_pan": {
       "trigger": "minecraft:placed_block",
       "conditions": {
-        "block": "farmersdelight:cooking_pot"
+        "block": "farmersdelight:frying_pan"
       }
     }
   },
   "requirements": [
     [
-      "cooking_pot"
+      "frying_pan"
     ]
   ]
 }
