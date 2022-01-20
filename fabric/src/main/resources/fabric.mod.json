@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "id": "farmersmoredelightful",
   "version": "${version}",
-  "name": "Farmers More Delightful",
+  "name": "Farmer's More Delightful",
   "description": "Add-on to Farmers Delight",
   "authors": [
     "Me!"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
+    "homepage": "https://github.com/FabricMC/farmers-more-delightful",
     "sources": "https://github.com/FabricMC/farmers-more-delightful"
   },
   "license": "Insert License Here",
@@ -17,6 +17,12 @@
   "entrypoints": {
     "main": [
       "com.nytz.mc.farmersmoredelightful.fabric.FarmersMoreDelightfulFabric"
+    ],
+    "client": [
+      "com.nytz.mc.farmersmoredelightful.fabric.FarmersMoreDelightfulFabricClient"
+    ],
+    "rei_plugins": [
+      "com.nytz.mc.farmersmoredelightful.fabric.integration.rei.FarmersDelightModREI"
     ]
   },
   "depends": {

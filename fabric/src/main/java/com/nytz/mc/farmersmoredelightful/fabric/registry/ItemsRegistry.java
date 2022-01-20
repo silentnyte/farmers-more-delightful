@@ -1,5 +1,7 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
+
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
 import com.nhoryzon.mc.farmersdelight.item.ConsumableItem;
 import com.nhoryzon.mc.farmersdelight.item.DogFoodItem;
@@ -12,6 +14,7 @@ import com.nhoryzon.mc.farmersdelight.item.ModItemSettings;
 import com.nhoryzon.mc.farmersdelight.item.Foods;
 import com.nhoryzon.mc.farmersdelight.item.MushroomColonyBlockItem;
 import com.nhoryzon.mc.farmersdelight.item.RopeItem;
+
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -47,7 +50,7 @@ public enum ItemsRegistry {
 
     public static void registerAll() {
         for (ItemsRegistry value : values()) {
-            Registry.register(Registry.ITEM, new Identifier(FarmersDelightMod.MOD_ID, value.pathName), value.get());
+            Registry.register(Registry.ITEM, new Identifier(FarmersMoreDelightful.MOD_ID, value.pathName), value.get());
             if (value.burnTime != null) {
                 FuelRegistry.INSTANCE.add(value.get(), value.burnTime);
             }

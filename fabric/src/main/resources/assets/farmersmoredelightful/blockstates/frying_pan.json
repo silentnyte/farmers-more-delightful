@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=north,down=false": {
-      "model": "farmersdelight:block/frying_pan"
+      "model": "farmersmoredelightful:block/frying_pan"
     },
     "facing=south,down=false": {
-      "model": "farmersdelight:block/frying_pan",
+      "model": "farmersmoredelightful:block/frying_pan",
       "y": 180
     },
     "facing=west,down=false": {
-      "model": "farmersdelight:block/frying_pan",
+      "model": "farmersmoredelightful:block/frying_pan",
       "y": 270
     },
     "facing=east,down=false": {
-      "model": "farmersdelight:block/frying_pan",
+      "model": "farmersmoredelightful:block/frying_pan",
       "y": 90
     },
     "facing=north,down=true": {
-      "model": "farmersdelight:block/frying_pan_supported"
+      "model": "farmersmoredelightful:block/frying_pan_supported"
     },
     "facing=south,down=true": {
-      "model": "farmersdelight:block/frying_pan_supported",
+      "model": "farmersmoredelightful:block/frying_pan_supported",
       "y": 180
     },
     "facing=west,down=true": {
-      "model": "farmersdelight:block/frying_pan_supported",
+      "model": "farmersmoredelightful:block/frying_pan_supported",
       "y": 270
     },
     "facing=east,down=true": {
-      "model": "farmersdelight:block/frying_pan_supported",
+      "model": "farmersmoredelightful:block/frying_pan_supported",
       "y": 90
     }
   }

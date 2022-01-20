@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.FryingPanScreenHandler;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
@@ -27,7 +28,7 @@ public enum ExtendedScreenTypesRegistry {
 
     public static void registerAll() {
         for (ExtendedScreenTypesRegistry value : values()) {
-            Registry.register(Registry.SCREEN_HANDLER, new Identifier(FarmersDelightMod.MOD_ID, value.pathName), value.get());
+            Registry.register(Registry.SCREEN_HANDLER, new Identifier(FarmersMoreDelightful.MOD_ID, value.pathName), value.get());
         }
     }
 

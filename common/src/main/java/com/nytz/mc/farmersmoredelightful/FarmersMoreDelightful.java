@@ -5,6 +5,8 @@ import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.Registries;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.text.TranslatableText;
+
 /* 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +18,11 @@ import java.util.function.Supplier;
 
 public class FarmersMoreDelightful {
     public static final String MOD_ID = "farmersmoredelightful";
+
+    public static TranslatableText i18n(String key, Object... args) {
+        return new TranslatableText(MOD_ID + "." + key, args);
+    }
+
     // We can use this if we don't want to use DeferredRegister
  
 /*

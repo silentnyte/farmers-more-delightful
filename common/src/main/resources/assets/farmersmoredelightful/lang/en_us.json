@@ -1,0 +1,12 @@
+{
+  "block.farmersmoredelightful.frying_pan": "Frying Pan",
+  "farmersmoredelightful.container.frying_pan": "Frying Pan",
+  "farmersmoredelightful.container.frying_pan.served_on": "Served on: %s",
+  "farmersmoredelightful.tooltip.frying_pan.empty": "Empty",
+  "farmersmoredelightful.tooltip.frying_pan.single_serving": "Holds 1 serving of:",
+  "farmersmoredelightful.tooltip.frying_pan.many_servings": "Holds %s servings of:",
+  "farmersmoredelightful.advancement.place_frying_pan": "Dinner's Served!",
+  "farmersmoredelightful.advancement.place_frying_pan.desc": "Put down a Frying Pan and start preparing meals!",
+  "farmersmoredelightful.subtitles.frying_pan.boil": "Frying Pan boils"
+
+}

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "farmersdelight:frying_pan"
+      "farmersmoredelightful:frying_pan"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "farmersdelight:frying_pan"
+        "recipe": "farmersmoredelightful:frying_pan"
       }
     }
   },

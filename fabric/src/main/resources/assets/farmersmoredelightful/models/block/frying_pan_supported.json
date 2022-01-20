@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "farmersdelight:block/frying_pan",
-		"1": "farmersdelight:block/frying_pan_tray_top",
-		"2": "farmersdelight:block/frying_pan_tray_side",
-		"particle": "farmersdelight:block/frying_pan"
+		"0": "farmersmoredelightful:block/frying_pan",
+		"1": "farmersmoredelightful:block/frying_pan_tray_top",
+		"2": "farmersmoredelightful:block/frying_pan_tray_side",
+		"particle": "farmersmoredelightful:block/frying_pan"
 	},
 	"elements": [
 		{

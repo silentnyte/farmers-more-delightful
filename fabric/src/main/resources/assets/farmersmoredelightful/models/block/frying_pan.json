@@ -3,8 +3,8 @@
 	"parent": "block/block",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "farmersdelight:block/frying_pan",
-		"particle": "farmersdelight:block/frying_pan"
+		"0": "farmersmoredelightful:block/frying_pan",
+		"particle": "farmersmoredelightful:block/frying_pan"
 	},
 	"elements": [
 		{

@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.block.FryingPanBlock;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
@@ -84,7 +85,7 @@ public enum BlocksRegistry {
     public static void registerAll() {
         for (BlocksRegistry value : values()) {
             Block block = value.get();
-            Registry.register(Registry.BLOCK, new Identifier(FarmersDelightMod.MOD_ID, value.pathName), block);
+            Registry.register(Registry.BLOCK, new Identifier(FarmersMoreDelightful.MOD_ID, value.pathName), block);
             if (isValidFlammableEntry(value.flammableRate)) {
                 FlammableBlockRegistry.getDefaultInstance().add(block, value.flammableRate);
             }

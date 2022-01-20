@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.integration.rei;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.client.screen.FryingPanScreen;
 import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipe;
 import com.nytz.mc.farmersmoredelightful.fabric.registry.BlocksRegistry;
@@ -32,7 +33,7 @@ import java.util.stream.Collectors;
 @Environment(EnvType.CLIENT)
 public class FarmersDelightModREI implements REIClientPlugin {
 
-    public static final CategoryIdentifier<CookingRecipeDisplay> COOKING = CategoryIdentifier.of(FarmersDelightMod.MOD_ID, "cooking");
+    public static final CategoryIdentifier<CookingRecipeDisplay> COOKING = CategoryIdentifier.of(FarmersMoreDelightful.MOD_ID, "cooking");
 
     @Override
     public void registerCategories(CategoryRegistry registry) {

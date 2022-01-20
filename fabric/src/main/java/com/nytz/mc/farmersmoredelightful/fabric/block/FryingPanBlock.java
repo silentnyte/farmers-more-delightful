@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.block;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.FryingPanBlockEntity;
 import com.nytz.mc.farmersmoredelightful.fabric.registry.BlockEntityTypesRegistry;
 import com.nytz.mc.farmersmoredelightful.fabric.registry.SoundsRegistry;
@@ -141,15 +142,15 @@ public class FryingPanBlock extends BlockWithEntity implements InventoryProvider
                 ItemStack meal = handler.getStack(6);
                 if (!meal.isEmpty()) {
                     MutableText servingsOf = meal.getCount() == 1
-                            ? FarmersDelightMod.i18n("tooltip.frying_pan.single_serving")
-                            : FarmersDelightMod.i18n("tooltip.frying_pan.many_servings", meal.getCount());
+                            ? FarmersMoreDelightful.i18n("tooltip.frying_pan.single_serving")
+                            : FarmersMoreDelightful.i18n("tooltip.frying_pan.many_servings", meal.getCount());
                     tooltip.add(servingsOf.formatted(Formatting.GRAY));
                     MutableText mealName = meal.getName().shallowCopy();
                     tooltip.add(mealName.formatted(meal.getRarity().formatting));
                 }
             }
         } else {
-            tooltip.add(FarmersDelightMod.i18n("tooltip.frying_pan.empty").formatted(Formatting.GRAY));
+            tooltip.add(FarmersMoreDelightful.i18n("tooltip.frying_pan.empty").formatted(Formatting.GRAY));
         }
     }
 

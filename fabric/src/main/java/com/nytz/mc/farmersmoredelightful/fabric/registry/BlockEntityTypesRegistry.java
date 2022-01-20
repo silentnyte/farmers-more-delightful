@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.FryingPanBlockEntity;
 
 import com.nhoryzon.mc.farmersdelight.FarmersDelightMod;
@@ -35,7 +36,7 @@ public enum BlockEntityTypesRegistry {
 
     public static void registerAll() {
         for (BlockEntityTypesRegistry value : values()) {
-            Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(FarmersDelightMod.MOD_ID, value.pathName), value.get());
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(FarmersMoreDelightful.MOD_ID, value.pathName), value.get());
         }
     }
 

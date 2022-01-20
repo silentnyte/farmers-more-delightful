@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.entity.block;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.block.FryingPanBlock;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.FryingPanScreenHandler;
 import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipe;
@@ -195,7 +196,7 @@ public class FryingPanBlockEntity extends BlockEntity implements BlockEntityClie
 
     @Override
     public Text getName() {
-        return customName != null ? customName : FarmersDelightMod.i18n("container.frying_pan");
+        return customName != null ? customName : FarmersMoreDelightful.i18n("container.frying_pan");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.client.screen;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen.FryingPanScreenHandler;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -21,7 +22,7 @@ import java.util.List;
 @Environment(value = EnvType.CLIENT)
 public class FryingPanScreen extends HandledScreen<FryingPanScreenHandler> {
 
-    private static final Identifier BACKGROUND_TEXTURE = new Identifier(FarmersDelightMod.MOD_ID, "textures/gui/frying_pan.png");
+    private static final Identifier BACKGROUND_TEXTURE = new Identifier(FarmersMoreDelightful.MOD_ID, "textures/gui/frying_pan.png");
 
     public FryingPanScreen(FryingPanScreenHandler screenContainer, PlayerInventory inv, Text titleIn) {
         super(screenContainer, inv, titleIn);
@@ -51,7 +52,7 @@ public class FryingPanScreen extends HandledScreen<FryingPanScreenHandler> {
                 ItemStack containerItem = handler.tileEntity.getContainer();
                 String container = !containerItem.isEmpty() ? containerItem.getItem().getName().getString() : "";
 
-                tooltip.add(FarmersDelightMod.i18n("container.frying_pan.served_on", container).formatted(Formatting.GRAY));
+                tooltip.add(FarmersMoreDelightful.i18n("container.frying_pan.served_on", container).formatted(Formatting.GRAY));
 
                 renderTooltip(ms, tooltip, mouseX, mouseY);
             } else {

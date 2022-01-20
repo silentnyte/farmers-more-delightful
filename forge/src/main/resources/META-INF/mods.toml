@@ -6,7 +6,7 @@ license = "Insert License Here"
 [[mods]]
 modId = "farmersmoredelightful"
 version = "${version}"
-displayName = "Farmers More Delightful"
+displayName = "Farmer's More Delightful"
 authors = "Me!"
 description = '''
 Add-on to Farmers Delight

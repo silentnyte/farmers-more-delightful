@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.entity.block.screen;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.FryingPanBlockEntity;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.inventory.FryingPanMealSlot;
 import com.nytz.mc.farmersmoredelightful.fabric.entity.block.inventory.FryingPanResultSlot;

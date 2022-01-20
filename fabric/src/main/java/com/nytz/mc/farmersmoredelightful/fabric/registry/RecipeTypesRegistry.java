@@ -1,5 +1,6 @@
 package com.nytz.mc.farmersmoredelightful.fabric.registry;
 
+import com.nytz.mc.farmersmoredelightful.FarmersMoreDelightful;
 import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipe;
 import com.nytz.mc.farmersmoredelightful.fabric.recipe.FryingPanRecipeSerializer;
 
@@ -33,8 +34,8 @@ public enum RecipeTypesRegistry {
 
     public static void registerAll() {
         for (RecipeTypesRegistry value : values()) {
-            Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(FarmersDelightMod.MOD_ID, value.pathName), value.serializer());
-            value.type = RecipeType.register(new Identifier(FarmersDelightMod.MOD_ID, value.pathName).toString());
+            Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(FarmersMoreDelightful.MOD_ID, value.pathName), value.serializer());
+            value.type = RecipeType.register(new Identifier(FarmersMoreDelightful.MOD_ID, value.pathName).toString());
         }
     }
 
@@ -54,7 +55,7 @@ public enum RecipeTypesRegistry {
     @SuppressWarnings({"unchecked","unused"})
     private <T extends Recipe<? extends Inventory>> RecipeType<T> type(Class<T> clazz) {
         if (type == null) {
-            type = RecipeType.register(new Identifier(FarmersDelightMod.MOD_ID, pathName).toString());
+            type = RecipeType.register(new Identifier(FarmersMoreDelightful.MOD_ID, pathName).toString());
         }
         return (RecipeType<T>) type;
     }
